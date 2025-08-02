@@ -1,0 +1,8 @@
+.idea
+*.pyc
+
+local_*
+
+migrations
+
+*.sqlite3

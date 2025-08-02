@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/vazir.woff2') format('woff2');
+}
+
+body {
+    line-height: 1.6;
+    direction: rtl;
+    font-family: "Vazir", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header-titel {
+    text-align: center;
+}
+
+.header-sub-titel {
+    text-align: center;
+}
+
+.lfw-bold {
+    font-weight: 900;
+}
+
+.lfw-sm-bold {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.background_preview {
+    background-color: #F5EFFF;
+    border: solid 1px;
+    border-color: rgba(229, 217, 242, 0.596);
+
+}
+
+.background {
+    background-color: #f5efff17;
+    border: solid 1px;
+    border-color: rgba(229, 217, 242, 0.596);
+
+}
+
+li {
+    font-size: 14px;
+    font-weight: bolder;
+
+}
+
+ul {
+
+    list-style-position: inside;
+    list-style-type: none;
+}
+
+ul.outside {
+    list-style-position: outside;
+}
+
+ul.inside {
+    list-style-position: inside;
+}
+
+li {
+    margin-left: 1em;
+    padding-left: 5em;
+}
+
+.article {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}

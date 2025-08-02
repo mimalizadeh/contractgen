@@ -1,0 +1,109 @@
+{% load static %}
+{% load contract_tags %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'contracts/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contracts/css/style.css' %}">
+</head>
+
+<body>
+    <div class="p-1">
+        <div class="p-4 rounded-3 background  ">
+            <h2 class="header-titel lfw-bold">قرارداد همکاری فریلنسری</h2>
+            <p class="header-sub-titel mt-4">باسمه تعالی</p>
+
+        </div>
+
+        <div class="mt-3 contract-info  p-3 rounded-3  ">
+            <p>این قرارداد به شماره <span class="lfw-bold">{{contract.serial}}</span> در تاریخ <span
+                    class="lfw-bold">{{contract.start_date}}</span> به منظور همکاری در زمینه <span
+                    class="lfw-bold">{{contract.title}}</span>
+                میان <span class="lfw-bold"> کارفرما یا نماینده قانونی ایشان</span> و <span class="lfw-bold">مجری</span>
+                منعقد میگردد.</p>
+        </div>
+
+
+        <p class="mt-3 lfw-bold">مشخصات مجری</p>
+        <div class="presenter p-3 rounded-3 background">
+            <p>نام و نام خانوادگی <span class="lfw-bold">{{contract.presenter.name}}</span> به کد ملی <span
+                    class="lfw-bold">
+                    {{contract.presenter.national_code}}</span> و نشانی <span
+                    class="lfw-bold">{{contract.presenter.address}}</span> و تلفن <span
+                    class="lfw-bold">{{contract.presenter.phone_number}}</span> که از این پس <span
+                    class="lfw-bold">مجری</span> نامیده میشود.
+            </p>
+        </div>
+
+        <p class="mt-3 lfw-bold">مشخصات کارفرما</p>
+        <div class="employer  p-3 rounded-3 background ">
+            <p>نام و نام خانوادگی <span class="lfw-bold">{{contract.employer.name}}</span> به کد ملی <span
+                    class="lfw-bold">
+                    {{contract.employer.national_code}}</span> و نشانی <span
+                    class="lfw-bold">{{contract.employer.address}}</span> و تلفن <span
+                    class="lfw-bold">{{contract.employer.phone_number}}</span> که از این پس <span
+                    class="lfw-bold">کارفرما</span> نامیده میشود.
+            </p>
+        </div>
+
+
+        <hr class="text-muted">
+
+        {% for clause in clauses %}
+        <p class="mt-3 lfw-bold">ماده {{ forloop.counter }} : {{ clause.title }}</p>
+        <div class="employer  p-3 rounded-3 background article">
+            <!-- {{ clause.content }} -->
+            {{ clause.content|render_contract:context_data|safe }}
+
+        </div>
+        {% endfor %}
+
+        <hr class="text-muted">
+        <div class="mt-3 p-3 rounded-3 background ">
+            <p style="line-height: 2; font-size: 14px; text-align: justify;">
+                اینجانب
+                <strong>{{contract.presenter.name}}</strong>
+                به عنوان مجری و اینجانب
+                <strong>{{contract.employer.name}}</strong>
+                به عنوان کارفرما، ضمن تأیید کلیه مفاد و شرایط مندرج در این قرارداد، متعهد می‌ گردیم که کلیه تعهدات ذکر
+                شده را
+                با دقت و مسئولیت‌ پذیری کامل اجرا نماییم.
+            </p>
+
+            <p style="line-height: 2; font-size: 14px;">
+                 این قرارداد در تاریخ
+                <strong>{{contract.start_date}}</strong>
+                در دو نسخه تنظیم و به امضای طرفین رسیده است و هر نسخه حکم واحد دارد .
+            </p>
+
+            <br><br>
+
+            <table style="width: 100%; margin-top: 30px; font-size: 14px;">
+                <tr>
+                    <td style="width: 50%; text-align: center;">
+                        <strong>امضا و اثر انگشت مجری</strong><br><br>
+                        نام : {{contract.presenter.name}}<br>
+
+                    </td>
+                    <td style="width: 50%; text-align: center;">
+                        <strong>امضا و اثر انگشت کارفرما یا نماینده قانونی</strong><br><br>
+                        نام : {{contract.employer.name}}<br>
+                    </td>
+                </tr>
+            </table>
+            <br><br><br>
+        </div>
+
+
+    </div>
+
+    <script type="module" src="{% static 'contracts/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
